@@ -3,6 +3,10 @@
 
 Command your Google AIY Voice Kit to play playlists from your Google Music account using `play <playlist>`.
 
+See it in action here:
+
+[![Google AIY Music](http://img.youtube.com/vi/qc33GWXeAnU/0.jpg)](http://www.youtube.com/watch?v=qc33GWXeAnU "Google AIY Music")
+
 ## Installation
 
 Requires VLC for Raspbian: `sudo apt-get install vlc`
