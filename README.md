@@ -1,5 +1,5 @@
 # gmusicaiy
-##Google Music action for Google AIY Voice Kit
+## Google Music action for Google AIY Voice Kit
 
 Requires VLC for Raspbian: `sudo apt-get install vlc`
 
