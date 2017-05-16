@@ -3,8 +3,12 @@ from vlc import EventType, Instance
 from threading import Thread
 import json
 import os.path
-import scrollphat
 import time
+
+enable_display = True
+if enable_display:
+    import scrollphat
+    scrollphat.set_brightness(5)
 
 class Player(object):
 
@@ -25,11 +29,11 @@ class Player(object):
             self.song_library = self.api.get_all_songs()
             # Save to file
             with open('songs.json', 'w') as output_file:
-                json.dump(self.song_library, output_file)
-            
-        scrollphat.set_brightness(5)
+                json.dump(self.song_library, output_file)    
         
     def load_playlist(self, name):
+        name = name.strip().lower()
+        print("Looking for...", name)
         if os.path.isfile("playlists.json"):
             # Load from file
             print("Found playlist data.")
@@ -44,11 +48,13 @@ class Player(object):
         self.loaded_tracks = []
         for playlist_dict in self.playlists:
             playlist_name = playlist_dict['name'].strip().lower()
-            if  playlist_name == name.lower() or name in playlist_name:
-                print("Found...", playlist_dict['name'])
+            if (playlist_name == name) or (name in playlist_name):
+                print("Found match...", playlist_dict['name'])
                 for track_dict in playlist_dict['tracks']:
                     self.loaded_tracks.append(track_dict)
                 return True
+            else:
+                print("Found...", playlist_dict['name'])
         return False
  
     def end_callback(self, event, track_index):
@@ -85,9 +91,11 @@ class Player(object):
         
         if (self.thread_running):
             self.thread_running = False
-        scrollphat.write_string(song_string+" "*5)
-        thread = Thread(target=self.scroll_string)
-        thread.start()
+
+        if enable_display:
+            scrollphat.write_string(" "*5+song_string)
+            thread = Thread(target=self.scroll_string)
+            thread.start()
         
         self.playing = True
 
@@ -100,7 +108,8 @@ class Player(object):
     def stop(self):
         if self.player != None:
             self.player.stop()
-        scrollphat.clear()
+        if enable_display:
+            scrollphat.clear()
         self.thread_running = False
         self.playing = False
 

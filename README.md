@@ -52,4 +52,12 @@ def make_actor(say):
     actor.add_keyword(_('play'), PlayAction(say)) 
 ```
 
-Make sure to provide your own email address and password. If you don't know your device ID, an error will be raised and a list of your valid IDs displayed in the terminal window. Make sure to copy one of these into the script. 
+## Acount Details
+
+Make sure to provide your own account email address and password. If you don't know your device ID, an error will be raised and a list of your valid IDs displayed in the terminal window. Make sure to copy one of these into the script. 
+
+Note: If you're using two-factor authentication you'll need to replace the account password with the device specific password.
+
+## Stored Data
+
+The code stores two local files containing song and playlist data. If you add songs or playlists, make sure to delete these so that the local data is regenerated.
