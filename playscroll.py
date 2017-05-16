@@ -60,7 +60,7 @@ class Player(object):
     def end_callback(self, event, track_index):
         if track_index < len(self.loaded_tracks):
             self.play_song(self.loaded_tracks[track_index])
-            event_manager = player.event_manager()
+            event_manager = self.player.event_manager()
             event_manager.event_attach(EventType.MediaPlayerEndReached, self.end_callback, track_index + 1)
             self.playing = True
         else:
