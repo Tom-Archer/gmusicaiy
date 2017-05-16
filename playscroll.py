@@ -89,15 +89,14 @@ class Player(object):
 
         print("Playing...",song_string)
         
-        if (self.thread_running):
-            self.thread_running = False
-
         if enable_display:
             scrollphat.clear()
             scrollphat.write_string(" "*5+song_string)
-            thread = Thread(target=self.scroll_string)
-            thread.start()
-        
+
+            if not self.thread_running:
+                thread = Thread(target=self.scroll_string)
+                thread.start()
+
         self.playing = True
 
     def scroll_string(self):
