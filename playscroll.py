@@ -93,6 +93,7 @@ class Player(object):
             self.thread_running = False
 
         if enable_display:
+            scrollphat.clear()
             scrollphat.write_string(" "*5+song_string)
             thread = Thread(target=self.scroll_string)
             thread.start()
