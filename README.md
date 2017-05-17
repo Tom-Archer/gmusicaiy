@@ -20,7 +20,7 @@ Make sure that `playscroll.py` and `vlc.py` are located in `/home/pi/voice-recog
 Add an action to `action.py` as follows:
 
 ```python
-sys.path.append('/home/pi/Python/gmusicaiy')
+#sys.path.append('/home/pi/Python/gmusicaiy') # update this if playscroll.py and vlc.py are not in same folder as action.py
 from playscroll import Player
 import time
 import RPi.GPIO
@@ -49,10 +49,11 @@ class PlayAction(object):
             self.player.stop()
 
 def make_actor(say):
+    # add this after other keywords/setup
     actor.add_keyword(_('play'), PlayAction(say)) 
 ```
 
-## Acount Details
+## Account Details
 
 Make sure to provide your own account email address and password. If you don't know your device ID, an error will be raised and a list of your valid IDs displayed in the terminal window. Make sure to copy one of these into the script. 
 
