@@ -20,7 +20,9 @@ Make sure that `playscroll.py` and `vlc.py` are located in `/home/pi/voice-recog
 Add an action to `action.py` as follows:
 
 ```python
-#sys.path.append('/home/pi/Python/gmusicaiy') # update this if playscroll.py and vlc.py are not in same folder as action.py
+# The system path needs updating if playscroll.py and vlc.py are not in same folder as action.py
+#import sys 
+#sys.path.append('/home/pi/Python/gmusicaiy')
 from playscroll import Player
 import time
 import RPi.GPIO
