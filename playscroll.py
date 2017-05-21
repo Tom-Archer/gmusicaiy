@@ -52,10 +52,10 @@ class Player(object):
                 print("Found match...", playlist_dict['name'])
                 for track_dict in playlist_dict['tracks']:
                     self.loaded_tracks.append(track_dict)
-                return True
+                return playlist_dict['name']
             else:
                 print("Found...", playlist_dict['name'])
-        return False
+        return None
  
     def end_callback(self, event, track_index):
         if track_index < len(self.loaded_tracks):
