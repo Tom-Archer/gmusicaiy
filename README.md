@@ -37,7 +37,7 @@ class PlayAction(object):
         
     def run(self, voice_command):
         playlist = voice_command.replace("play","").strip()
-        if self.player.load_playlist(playlist):
+        if self.player.load_playlist(playlist) is not None:
             self.say("Playing " + playlist)
             self.player.start_playlist()
 
